@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability - SeaWraps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0d5e63',
+                        'secondary': '#3a7563',
+                        'light-green': '#9fd9a0',
+                        'dark': '#1a1a1a',
+                        'card-green': '#72b377',
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .main-container {
+            border-radius: 30px;
+            background-color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        /* Custom curved line for the hero section */
+        .curved-line {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 200px;
+            height: 150px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-left: none;
+            border-bottom: none;
+            transform: rotate(30deg);
+        }
+
+        /* Hide scrollbar but allow scrolling */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body class="w-screen bg-[#1a1a1a] min-h-screen">
+    <!-- Main container with dark background -->
+    <div class="main-container w-full mx-auto p-4 md:p-8 text-white">
+        <!-- Navigation Bar -->
+        <nav class="flex flex-wrap items-center justify-between mb-8">
+            <!-- Logo -->
+            <div class="flex items-center bg-gray-300/20 p-4 rounded-[20px]">
+                <div class="text-white font-bold text-xl md:text-2xl mr-2">
+                    <span class="flex items-center">
+                        <svg class="w-6 h-6 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 6H10V10H6V6Z" fill="white" />
+                            <path d="M6 16C6 13.7909 7.79086 12 10 12H14V16H10V20H6V16Z" fill="white" />
+                        </svg>
+                        SeaWraps
+                    </span>
+                </div>
+                <div class="bg-gray-700 text-gray-300 text-xs md:text-sm px-3 py-1 rounded-full ml-2">
+                    INC.
+                </div>
+            </div>
+
+            <!-- Middle section with social icons -->
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="#" class="bg-gray-300 h-12 w-20 text-dark p-3 rounded-[20px] flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="bg-gray-300 h-12 w-20 text-dark p-3 rounded-[20px] flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Right side menu -->
+            <!-- Right side with navigation for large screens and menu button for mobile -->
+            <div class="flex items-center space-x-2">
+                <!-- Navigation for large screens -->
+                <div class="hidden md:flex items-center space-x-8 mr-4 bg-gray-300/20 p-4 rounded-[20px]">
+                    <a href="../index.html"
+                        class="text-white hover:text-green-300 pb-1 border-b-2 border-transparent hover:border-green-300 transition-all">Home</a>
+                    <a href="./about.html"
+                        class="text-white hover:text-green-300 pb-1 border-b-2 border-transparent hover:border-green-300 transition-all">About</a>
+                    <a href="./products.html"
+                        class="text-white hover:text-green-300 pb-1 border-b-2 border-transparent hover:border-green-300 transition-all">Products</a>
+                    <a href="./sustainability.html"
+                        class="text-white hover:text-green-300 pb-1 border-b-2 border-transparent hover:border-green-300 transition-all">Sustainability</a>
+
+                </div>
+
+                <!-- Mobile menu button - only visible on small screens -->
+                <button id="mobile-menu-button" class="md:hidden bg-gray-300 text-dark p-2 rounded-full">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Contact Us button -->
+                <a href="./contact.html"
+                    class="bg-gray-200/20 hover:bg-gray-700 text-white px-6 py-4 rounded-full hidden md:block">
+                    Contact Us
+                </a>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu"
+            class="mobile-menu fixed inset-0 bg-dark z-50 p-6 flex flex-col justify-between md:hidden">
+            <div>
+                <div class="flex justify-between items-center mb-8">
+                    <div class="text-white font-bold text-2xl">SeaWraps</div>
+                    <button id="close-menu" class="text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-4">
+                    <a href="../index.html" class="text-white text-xl py-2 border-b border-gray-800">Home</a>
+                    <a href="./about.html" class="text-white text-xl py-2 border-b border-gray-800">About</a>
+                    <a href="./products.html" class="text-white text-xl py-2 border-b border-gray-800">Products</a>
+                    <a href="./sustainability.html"
+                        class="text-white text-xl py-2 border-b border-gray-800">Sustainability</a>
+                    <a href="./contact.html" class="text-white text-xl py-2">Contact Us</a>
+                </nav>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="bg-gray-300 text-dark p-3 rounded-full">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="bg-gray-300 text-dark p-3 rounded-full">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <section class="my-8">
+            <div class="relative">
+                <h1 class="text-4xl md:text-6xl font-light mb-4">
+                    Our <span class="text-light-green">Sustainability</span> Commitment
+                </h1>
+                <p class="text-xl text-gray-400 mb-8 max-w-3xl">
+                    We're dedicated to creating packaging solutions that protect our oceans and environment for future
+                    generations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Hero Image Section -->
+        <section class="mb-16">
+            <div class="relative rounded-3xl overflow-hidden h-96 md:h-[500px]">
+                <img src="https://images.unsplash.com/photo-1557408645-ba88d51c0825?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Ocean view" class="w-full h-full object-cover">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex flex-col justify-center p-8 md:p-16">
+                    <div class="max-w-xl">
+                        <h2 class="text-3xl md:text-4xl font-semibold text-white mb-4">Our Oceans Need Help</h2>
+                        <p class="text-white/90 text-lg mb-6">Every year, over 8 million tons of plastic enter our
+                            oceans, decimating marine ecosystems and threatening over 700 species with extinction.</p>
+                        <a href="#solutions"
+                            class="inline-block bg-card-green hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium">
+                            See Our Solutions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem Section -->
+        <section class="my-16">
+            <h2 class="text-3xl font-light mb-8">The <span class="text-light-green">Problem</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800/30 p-6 rounded-2xl">
+                    <div class="h-16 w-16 bg-red-500/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Plastic Never Goes Away</h3>
+                    <p class="text-gray-400">Conventional plastic takes 400+ years to break down, fragmenting into
+                        microplastics that contaminate our water, soil, and food supply.</p>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl">
+                    <div class="h-16 w-16 bg-red-500/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Marine Life Devastation</h3>
+                    <p class="text-gray-400">Over 100,000 marine mammals and one million seabirds die each year from
+                        ingesting or becoming entangled in plastic waste.</p>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl">
+                    <div class="h-16 w-16 bg-red-500/20 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Human Health Impact</h3>
+                    <p class="text-gray-400">Microplastics have been found in human blood, lungs, and placentas, with
+                        unknown long-term health consequences for future generations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Degradation Timeline Section -->
+        <section id="solutions" class="my-16 bg-gray-900/50 rounded-3xl p-8">
+            <h2 class="text-3xl md:text-4xl font-light mb-6 text-center">Degradation <span
+                    class="text-light-green">Timeline</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                <div class="bg-gray-800/50 p-6 rounded-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-red-400">Plastic</h3>
+                        <span class="text-sm text-gray-400">400+ years</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-4">
+                        <div class="bg-red-400 h-4 rounded-full" style="width: 100%"></div>
+                    </div>
+                    <p class="mt-4 text-gray-400">Plastic bags and containers can take centuries to break down,
+                        releasing harmful microplastics into the environment.</p>
+                </div>
+
+                <div class="bg-gray-800/50 p-6 rounded-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-yellow-400">Paper</h3>
+                        <span class="text-sm text-gray-400">2-6 months</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-4">
+                        <div class="bg-yellow-400 h-4 rounded-full" style="width: 15%"></div>
+                    </div>
+                    <p class="mt-4 text-gray-400">Paper packaging is better than plastic but still requires trees and
+                        significant water resources to produce.</p>
+                </div>
+
+                <div class="bg-gray-800/50 p-6 rounded-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-green-400">SeaWraps</h3>
+                        <span class="text-sm text-gray-400">6-8 weeks</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-4">
+                        <div class="bg-green-400 h-4 rounded-full" style="width: 5%"></div>
+                    </div>
+                    <p class="mt-4 text-gray-400">Our seaweed-based packaging decomposes rapidly, nourishing the soil
+                        and marine environments naturally.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Solution Section -->
+        <section class="my-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-light mb-6">Our <span class="text-light-green">Solution</span></h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p>SeaWraps has developed a revolutionary packaging material made entirely from sustainably
+                            harvested seaweed that completely breaks down in natural environments within weeks, not
+                            centuries.</p>
+                        <p>Our products are not only 100% biodegradable but also actively nourish marine ecosystems if
+                            they end up in the ocean, turning the problem into a solution.</p>
+                        <p>By using SeaWraps, you're not just avoiding harm - you're actively contributing to healthier
+                            oceans and a more sustainable future.</p>
+                    </div>
+
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-card-green p-2 rounded-full mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">Zero plastic waste</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-card-green p-2 rounded-full mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">Compostable within 6-8 weeks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-card-green p-2 rounded-full mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">Carbon-negative production process</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-card-green p-2 rounded-full mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">Supports coastal communities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1706958017374-a48b9792e24f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Seaweed farm" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Environmental Impact Metrics -->
+        <section class="my-16 bg-gray-900/50 rounded-3xl p-8">
+            <h2 class="text-3xl font-light mb-8 text-center">Our <span class="text-light-green">Impact</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-gray-800/30 p-6 rounded-2xl text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-light-green mb-2">500K+</div>
+                    <p class="text-gray-300">Pounds of plastic waste prevented</p>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-light-green mb-2">90%</div>
+                    <p class="text-gray-300">Lower carbon footprint than plastic</p>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-light-green mb-2">17K+</div>
+                    <p class="text-gray-300">Trees planted through our programs</p>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-light-green mb-2">200+</div>
+                    <p class="text-gray-300">Jobs created in coastal communities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainable Farming Section -->
+        <section class="my-16">
+            <h2 class="text-3xl font-light mb-8">Sustainable <span class="text-light-green">Seaweed Farming</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-2xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1641846132456-c9f4cbd5997d?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Seaweed farming" class="w-full h-full object-cover">
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl">
+                    <h3 class="text-2xl font-semibold mb-4">Regenerative Ocean Farming</h3>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Our seaweed is grown using regenerative ocean farming techniques that actually improve marine
+                            environments:</p>
+                        <ul class="space-y-2 list-disc pl-5">
+                            <li>Seaweed absorbs carbon dioxide and nitrogen, reducing ocean acidification</li>
+                            <li>Provides habitat for marine life, increasing biodiversity</li>
+                            <li>Requires no fertilizers, pesticides, or freshwater to grow</li>
+                            <li>Creates sustainable livelihoods for coastal communities</li>
+                        </ul>
+                        <p>Every SeaWraps product helps expand our seaweed farming operations, creating a virtuous cycle
+                            of environmental restoration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="my-16 bg-gray-900/50 rounded-3xl p-8">
+            <h2 class="text-3xl font-light mb-8 text-center">Our <span class="text-light-green">Certifications</span>
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-gray-800/30 p-6 rounded-2xl flex flex-col items-center">
+                    <svg class="w-16 h-16 text-light-green mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-center text-white font-semibold">Certified Biodegradable</h3>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl flex flex-col items-center">
+                    <svg class="w-16 h-16 text-light-green mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                    </svg>
+                    <h3 class="text-center text-white font-semibold">Carbon Neutral</h3>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl flex flex-col items-center">
+                    <svg class="w-16 h-16 text-light-green mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" />
+                    </svg>
+                    <h3 class="text-center text-white font-semibold">Ocean-Safe Verified</h3>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl flex flex-col items-center">
+                    <svg class="w-16 h-16 text-light-green mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                    </svg>
+                    <h3 class="text-center text-white font-semibold">Fair Trade Certified</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainability Goals -->
+        <section class="my-16">
+            <h2 class="text-3xl font-light mb-8">Our <span class="text-light-green">2025 Goals</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800/30 p-6 rounded-2xl h-full">
+                    <div class="h-16 w-16 bg-card-green rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Carbon Negative</h3>
+                    <p class="text-gray-400">We're expanding our seaweed farms to sequester more carbon than our entire
+                        operations produce, becoming carbon negative by 2025.</p>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl h-full">
+                    <div class="h-16 w-16 bg-card-green rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Zero Waste Production</h3>
+                    <p class="text-gray-400">We're implementing circular production methods to ensure 100% of our
+                        manufacturing byproducts are reused or composted.</p>
+                </div>
+
+                <div class="bg-gray-800/30 p-6 rounded-2xl h-full">
+                    <div class="h-16 w-16 bg-card-green rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Global Expansion</h3>
+                    <p class="text-gray-400">We're working to establish seaweed farms in 15 countries, creating
+                        sustainable livelihoods and reducing plastic waste worldwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join the Movement CTA -->
+        <section class="my-16 bg-gradient-to-r from-card-green to-primary rounded-3xl overflow-hidden relative">
+            <div class="absolute right-0 bottom-0 opacity-10">
+                <svg class="w-64 h-64" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+            </div>
+
+            <div class="p-8 md:p-12 relative z-10">
+                <div class="max-w-3xl">
+                    <h2 class="text-3xl md:text-5xl font-light mb-4 text-white">Join The Movement</h2>
+                    <p class="text-white/80 text-xl mb-8">Together, we can eliminate plastic pollution and protect our
+                        oceans for future generations. Every purchase makes a difference.</p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="products.html"
+                            class="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full font-medium inline-block text-center">
+                            Shop Now
+                        </a>
+                        <a href="#"
+                            class="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-medium inline-block text-center">
+                            Download Our Impact Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 border-t border-gray-800 pt-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 mr-2 text-light-green" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 6H10V10H6V6Z" fill="currentColor" />
+                            <path d="M6 16C6 13.7909 7.79086 12 10 12H14V16H10V20H6V16Z" fill="currentColor" />
+                        </svg>
+                        <span class="text-white text-2xl font-bold">SeaWraps</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Innovative eco-friendly packaging solutions made from seaweed. 100%
+                        biodegradable, 100% incredible.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Food Wraps</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Shopping Bags</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Food Containers</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Packaging Materials</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Bulk Orders</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="sustainability.html" class="text-gray-400 hover:text-white">Sustainability</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Our Process</a></li>
+                        <li><a href="sustainability.html" class="text-gray-400 hover:text-white">Impact Report</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-gray-400">123 Ocean Way, Coral City, FL 33101</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span class="text-gray-400">info@seawraps.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 pb-12">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 SeaWraps Inc. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && closeMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.add('open');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            });
+
+            closeMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            });
+        }
+    </script>
+</body>
+
+</html>
